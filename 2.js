@@ -107,7 +107,6 @@ class ListNode{
 class LinkedList{
     constructor() {
         this.head=null
-        this.size=0
     }
 
     add(data){
@@ -122,7 +121,6 @@ class LinkedList{
             }
             current.next = newNode;
         }
-        this.size++;        
     }
 
     remove(data){
@@ -136,7 +134,6 @@ class LinkedList{
                 }else{
                     previous.next = current.next
                 }
-                this.size--;
                 return current.data
             }
             previous = current;
@@ -156,7 +153,6 @@ class LinkedList{
         if (temp!=null) {
             newNode.next=temp.next;
             temp.next=newNode;
-            this.size++
         }
     }
 
@@ -179,7 +175,6 @@ class LinkedList{
                 }
                 prev.next = newNode;
             }
-            this.size++
         }
     }
 
@@ -216,8 +211,8 @@ list.arrayToList(arr)
 list.add(6)
 list.remove(5)
 list.replace(2,7)
-list.insertAfter(4,5)
-list.print()
+list.insertAfter(4,9)
+list.print() // 1 -> 7 -> 3 -> 4 -> 9 ->  6
 
 const array = list.listToArray()
 console.log('to Array: ',array)
