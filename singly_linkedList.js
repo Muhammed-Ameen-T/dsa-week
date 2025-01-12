@@ -85,13 +85,23 @@ class LinkedList {
     }
 
     print() {
-        let temp = this.head;
-        const listData = [];
-        while (temp) {
-            listData.push(temp.data);
-            temp = temp.next;
+        let current = this.head
+        while (current) {            
+            console.log(current.data);
+            current = current.next
         }
-        console.log('List:', listData.join(' -> '));
+    }
+
+    printReverse(){
+        let current = this.head
+        const stack = [];
+        while (current) {
+            stack.push(current.data);
+            current = current.next;
+        }
+        while (stack.length > 0) {
+            console.log(stack.pop());
+        }
     }
 }
 
@@ -109,4 +119,7 @@ list.removeDuplicates();
 list.remove(6)
 list.removeFirst()
 list.removeLast()
+console.log('Order List: ');
 list.print();  
+console.log('Reverse List: ');
+list.printReverse()
