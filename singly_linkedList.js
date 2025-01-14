@@ -35,23 +35,23 @@ class LinkedList {
         }
     }
 
-    addFirst(data){
-        let newNode = new Node(data)
-        newNode.next = this.head
-        this.head = newNode
+    addFirst(data) {
+        let newNode = new Node(data);
+        newNode.next = this.head;
+        this.head = newNode;
     }
 
-    remove(data){
+    remove(data) {
         let current = this.head;
         let previous = null;
         while (current) {
             if (current.data === data) {
                 if (!previous) {
-                    this.head= current.next
-                }else{
+                    this.head = current.next;
+                } else {
                     previous.next = current.next;
                 }
-                return current.data
+                return current.data;
             }
             previous = current;
             current = current.next;
@@ -59,19 +59,31 @@ class LinkedList {
         return null;
     }
 
-    removeFirst(){
+    deleteByValue(data) {
+        let current = this.head;
+        while (current && current.next) {
+            if (current.next.data === data) {
+                current.next = current.next.next;
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    removeFirst() {
         if (this.head) {
-            this.head=this.head.next;
+            this.head = this.head.next;
         }
     }
 
-    removeLast(){
+    removeLast() {
         if (!this.head) {
-            return null
+            return null;
         }
         if (!this.head.next) {
-            const tail = this.head
-            this.head = null
+            const tail = this.head;
+            this.head = null;
             return tail.data;
         }
         let current = this.head;
@@ -85,15 +97,15 @@ class LinkedList {
     }
 
     print() {
-        let current = this.head
-        while (current) {            
+        let current = this.head;
+        while (current) {
             console.log(current.data);
-            current = current.next
+            current = current.next;
         }
     }
 
-    printReverse(){
-        let current = this.head
+    printReverse() {
+        let current = this.head;
         const stack = [];
         while (current) {
             stack.push(current.data);
@@ -106,20 +118,22 @@ class LinkedList {
 }
 
 const list = new LinkedList();
-list.add(1); 
-list.add(2); 
+list.add(1);
 list.add(2);
-list.add(3); 
+list.add(2);
 list.add(3);
-list.add(4)
+list.add(3);
+list.add(4);
 list.add(5);
-list.add(6); 
-list.addFirst(0)
+list.add(6);
+list.addFirst(0);
 list.removeDuplicates();
-list.remove(6)
-list.removeFirst()
-list.removeLast()
-console.log('Order List: ');
-list.print();  
-console.log('Reverse List: ');
-list.printReverse()
+list.remove(6);
+list.removeFirst();
+list.removeLast();
+list.deleteByValue(4);
+
+console.log('Order List:');
+list.print();
+console.log('Reverse List:');
+list.printReverse();
