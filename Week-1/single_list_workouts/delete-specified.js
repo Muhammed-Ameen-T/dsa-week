@@ -3,8 +3,6 @@ class Node {
         this.data = data;
         this.next = null
     }
-
-    
 }
 
 class LinkedList {
@@ -42,7 +40,7 @@ class LinkedList {
         }
 
         if(!current) return;
-        previous.next = current.next
+        previous.next = current.next;
     }
 
     remove(){
@@ -79,4 +77,4 @@ list.add(3);
 list.add(4);
 list.add(5);
 list.deleteNode(4);
-list.print()
+list.print();

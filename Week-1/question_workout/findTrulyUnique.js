@@ -64,3 +64,10 @@ let comp = [...arr1,...arr2];
 // }
 // console.log(comp);
 
+//! Using IndexOf Method and filter
+// function isTruely(arr) {
+//     return arr.filter((val,index,arr)=>arr.indexOf(val)===arr.lastIndexOf(val))
+// }
+// console.log(isTruely(comp));
+
+

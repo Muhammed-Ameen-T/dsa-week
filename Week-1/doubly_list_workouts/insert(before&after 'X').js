@@ -11,7 +11,7 @@ class DoublyLinkedList {
         this.head = null;
         this.tail = null;
     }
-
+    
     addToEnd(data) {
         let newNode = new Node(data);
         if (!this.head) {
@@ -38,9 +38,9 @@ class DoublyLinkedList {
 
     insertAfter(x, data) {
         let current = this.head;
+        let newNode = new Node(data);
         while (current) {
             if (current.data === x) {
-                let newNode = new Node(data);
                 newNode.next = current.next;
                 newNode.prev = current;
                 if (current.next !== null) {

@@ -11,17 +11,6 @@ class LinkedList {
         this.tail = null;
     }
 
-    // add(data){
-    //     let newNode = new Node(data);
-    //     if (!this.head) {
-    //         this.head = newNode;
-    //         this.tail = newNode;
-    //     }else{
-    //         this.tail.next = newNode;
-    //         this.tail = newNode;
-    //     }
-    // }
-
     add(data){
         let newNode = new Node(data);
         if (!this.head) {
@@ -59,7 +48,7 @@ class LinkedList {
             console.log(current.data);
             current = current.next
         }
-    }
+    }   
 }
 
 const list = new LinkedList();
