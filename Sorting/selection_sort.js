@@ -22,3 +22,4 @@ function selectionSort(arr) {
 let exampleList = [64, 34, 25, 12, 22, 11, 90]; 
 let sortedList = selectionSort(exampleList); 
 console.log("Sorted list:", sortedList);
+

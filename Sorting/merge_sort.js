@@ -18,7 +18,7 @@ function merge(left,right) {
     }
     return [...sorted,...left,...right];
 }
-
+  
 const numbers = [38, 27, 43, 3, 9, 82, 10]; 
 const sortedNumbers = mergeSort(numbers); 
 console.log(sortedNumbers); 

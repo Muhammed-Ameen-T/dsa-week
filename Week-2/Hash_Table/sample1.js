@@ -1,72 +1,76 @@
 class HashTable {
-    constructor(size = 53) {
-        this.keyMap = new Array(size);
+    constructor(size) {
+        this.table = new Array(size);
+        this.size = size
     }
 
-    _hash(key) {
-        let total = 0;
-        let WEIRD_PRIME = 31;
-        for (let i = 0; i < Math.min(key.length, 100); i++) {
-            let char = key[i];
-            let value = char.charCodeAt(0) - 96;
-            total = (total * WEIRD_PRIME + value) % this.keyMap.length;
+    hash(key){
+        let hash = 0;
+        let PRIME = 31;
+        for (let i = 0; i < key.length; i++) {
+            hash = (hash * PRIME + key.charCodeAt(i)) % this.size
         }
-        return total;
+        return hash
     }
 
-    set(key, value) {
-        let index = this._hash(key);
-        if (!this.keyMap[index]) {
-            this.keyMap[index] = [];
+    set(key, value){
+        let index = this.hash(key);
+        let bucket =  this.table[index];
+        if (!bucket) {
+            this.table[index] = [[key, value]]
+        }else{
+            for (const item of bucket) {
+                if (item[0]==key) {
+                    item[1]=value
+                    return
+                }
+            }
+            bucket.push([key , value])
         }
-        this.keyMap[index].push([key, value]);
     }
 
-    get(key) {
-        let index = this._hash(key);
-        if (this.keyMap[index]) {
-            for (let i = 0; i < this.keyMap[index].length; i++) {
-                if (this.keyMap[index][i][0] === key) {
-                    return this.keyMap[index][i][1];
+    get(key){
+        let index = this.hash(key);
+        let bucket  =  this.table[index];
+        if (!bucket) {
+            return undefined
+        }else{
+            for (const item of bucket) {
+                if (item[0]==key) {
+                    return item[1]
                 }
             }
         }
-        return undefined;
     }
 
-    keys() {
-        let keysArr = [];
-        for (let i = 0; i < this.keyMap.length; i++) {
-            if (this.keyMap[i]) {
-                for (let j = 0; j < this.keyMap[i].length; j++) {
-                    if (!keysArr.includes(this.keyMap[i][j][0])) {
-                        keysArr.push(this.keyMap[i][j][0]);
-                    }
-                }
+    delete(key){
+        let index = this.hash(key);
+        let bucket = this.table[index]
+        for (const item of bucket) {
+            if (item[0]==key) {
+                bucket.splice(bucket.indexOf(item),1)
+                return item[0];
             }
         }
-        return keysArr;
+        return "Value Not Found"
     }
 
-    values() {
-        let valuesArr = [];
-        for (let i = 0; i < this.keyMap.length; i++) {
-            if (this.keyMap[i]) {
-                for (let j = 0; j < this.keyMap[i].length; j++) {
-                    if (!valuesArr.includes(this.keyMap[i][j][1])) {
-                        valuesArr.push(this.keyMap[i][j][1]);
-                    }
-                }
-            }
+    display(){
+        for (let i = 0; i < this.table.length; i++) {
+            if (this.table[i]) {
+                console.log(`Bucket ${i}:`,this.table[i]);
+            }           
         }
-        return valuesArr;
     }
+
 }
 
-// Example usage:
-const ht = new HashTable();
-ht.set("hello", "world");
-ht.set("goodbye", "everyone");
-console.log(ht.get("hello")); // Output: world
-console.log(ht.keys()); // Output: ["hello", "goodbye"]
-console.log(ht.values()); // Output: ["world", "everyone"]
+let ht = new HashTable(50);
+
+ht.set('name','Ameen');
+ht.set('age',18);
+ht.set('place','Calicut');
+ht.set('career','IT')
+console.log('Deleted:',ht.delete('age'));
+console.log('Get:',ht.get('place'));
+ht.display()

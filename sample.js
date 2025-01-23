@@ -1,52 +1,44 @@
-class Queue {
+class Stack {
     constructor() {
-        this.items = []; // Initialize an empty array to hold queue elements
+        this.item = []
     }
 
-    // Enqueue an element into the queue
-    enqueue(element) {
-        this.items.push(element); // Add element to the end of the queue
+    push(data){
+        return this.item.push(data);
     }
 
-    // Dequeue an element from the queue
-    dequeue() {
+    pop(){
         if (this.isEmpty()) {
-            throw new Error("Queue Underflow: Cannot dequeue from an empty queue.");
+            return 'Underflow'
         }
-        return this.items.shift(); // Remove and return the front element
+        return this.item.pop()
     }
 
-    // Get the front element of the queue
-    front() {
+    peek(){
         if (this.isEmpty()) {
-            throw new Error("Queue is empty: Cannot retrieve front.");
+            return 'Empty Array'
         }
-        return this.items[0]; // Return front element without removing it
+        return this.item[this.item.length-1];
     }
 
-    // Check if the queue is empty
-    isEmpty() {
-        return this.items.length === 0; // Return true if empty, false otherwise
+    isEmpty(){
+        return this.item.length===0
     }
 
-    // Get size of queue
-    size() {
-        return this.items.length; // Return number of elements in the queue
+    size(){
+        return this.item.length;
     }
 
-    // Print all elements in the queue
-    print() {
-        return this.items.join(" "); // Join elements with a space for display
+    print(){
+        console.log(this.item);
     }
 }
 
-// Example usage:
-const myQueue = new Queue();
-myQueue.enqueue(10);
-myQueue.enqueue(20);
-myQueue.enqueue(30);
-console.log(myQueue.print());      // Output: 10 20 30
-console.log(myQueue.front());       // Output: 10
-console.log(myQueue.dequeue());     // Output: 10
-console.log(myQueue.print());       // Output: 20 30
-console.log(myQueue.size());        // Output: 2
+let newStack = new Stack();
+newStack.push(1)
+newStack.push(2)
+newStack.push(3)
+newStack.push(4)
+newStack.push(5)
+newStack.pop()
+newStack.print();
