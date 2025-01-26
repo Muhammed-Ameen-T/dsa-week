@@ -24,11 +24,11 @@ class LinkedList {
     }
 
     findMiddle(){
-        let fast = this.head;
-        let slow = this.head;
-        while (fast && fast.next){
+        let fast =  this.head;
+        let slow = this.head
+        while (fast && fast.next) {
+            fast = fast.next.next;
             slow = slow.next
-            fast = fast.next.next
         }
         return slow ? slow.value : null
     }

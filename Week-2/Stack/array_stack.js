@@ -45,6 +45,6 @@ const stack = new Stack();
 stack.push(10);
 stack.push(20);
 stack.push(30);
-console.log(stack.pop()); // 30
-console.log(stack.peek()); // 20
+console.log('Popped',stack.pop()); // 30
+console.log('Peeked',stack.peek()); // 20
 stack.print(); // 10,20

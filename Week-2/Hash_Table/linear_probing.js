@@ -50,13 +50,13 @@ class HashTable {
             }
         }
     }
-    
 }
 
 let lpHashTable = new HashTable(10);
 lpHashTable.set('apple', 'fruit');
 lpHashTable.set('table', 'furniture');
 lpHashTable.set('banana', 'fruit');
+lpHashTable.set('banana', 'frui');
 lpHashTable.set('cola', 'drink');
 console.log('Got:',lpHashTable.get('cola'));
 lpHashTable.delete('cola')      
